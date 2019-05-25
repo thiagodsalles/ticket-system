@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tickets</h1>
+
+<%= link_to 'New Ticket', new_ticket_path, class:"nav-link" %>
+
+<div class="container">
+<div class=row>
+  <h2>Open</h2>
+</div>
+
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Device</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tickets.where(status: 'open').each do |ticket| %>
+    <tr>
+        <td><%= ticket.title %></td>
+        <td><%= ticket.description %></td>
+        <td><%= ticket.device.code %></td>
+        <td><%= link_to 'Show', ticket %></td>
+        <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+        <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+
+<div class="container">
+<div class=row>
+  <h2>Close</h2>
+</div>
+
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Device</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tickets.where(status: 'close').each do |ticket| %>
+    <tr>
+        <td><%= ticket.title %></td>
+        <td><%= ticket.description %></td>
+        <td><%= ticket.device.code %></td>
+        <td><%= link_to 'Show', ticket %></td>
+        <% if current_user.admin == "1" %>
+        <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+        <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+
