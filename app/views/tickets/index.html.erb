@@ -1,66 +1,77 @@
-<p id="notice"><%= notice %></p>
+<section class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Tickets</h1>
+    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+    <div class="float-right">
+      <%= link_to 'New Ticket', new_ticket_path, class:"btn btn-success btn-lg" %>
+    </div>
+  </div>
+</section>
 
-<h1>Listing Tickets</h1>
-
-<%= link_to 'New Ticket', new_ticket_path, class:"nav-link" %>
-
-<div class="container">
-<div class=row>
-  <h2>Open</h2>
-</div>
-
-<table class="table table-hover table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Device</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @tickets.where(status: 'open').each do |ticket| %>
-    <tr>
-        <td><%= ticket.title %></td>
-        <td><%= ticket.description %></td>
-        <td><%= ticket.device.code %></td>
-        <td><%= link_to 'Show', ticket %></td>
-        <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-        <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-</div>
-
-<div class="container">
-<div class=row>
-  <h2>Close</h2>
-</div>
-
-<table class="table table-hover table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Device</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @tickets.where(status: 'close').each do |ticket| %>
-    <tr>
-        <td><%= ticket.title %></td>
-        <td><%= ticket.description %></td>
-        <td><%= ticket.device.code %></td>
-        <td><%= link_to 'Show', ticket %></td>
-        <% if current_user.admin == "1" %>
-        <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-        <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<section class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="container">
+    <div class=row>
+      <h3>Open Tickets</h3>
+    </div>
+    <table class="table table-hover table-dark">
+      <thead>
+        <tr class="d-flex">
+          <th scope="col" class="col-3">Title</th>
+          <th scope="col" class="col-5">Description</th>
+          <th scope="col" class="col-2">Device Code</th>
+          <th scope="col" class="col-2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tickets.where(status: 'open').each do |ticket| %>
+        <tr class="d-flex">
+          <td class="col-3"><%= ticket.title %></td>
+          <td class="col-5"><%= ticket.description %></td>
+          <td class="col-2"><%= ticket.device.code %></td>
+          <td class="col-2">
+            <div class="row">
+              <%= link_to 'Show', ticket, :class => "btn btn-info btn-sm mx-2" %>
+              <%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm mx-2"  %>
+            </div>
+          </td>
+        </tr>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+    
+      <div class="container">
+        <div class=row>
+          <h3>Close Tickets</h3>
+        </div>
 
-</div>
-
+      <table class="table table-hover table-dark">
+        <thead>
+          <tr class="d-flex">
+            <th scope="col" class="col-3">Title</th>
+            <th scope="col" class="col-5">Description</th>
+            <th scope="col" class="col-2">Device</th>
+            <th scope="col" class="col-2"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @tickets.where(status: 'close').each do |ticket| %>
+        <tr class="d-flex">
+          <td class="col-3"><%= ticket.title %></td>
+          <td class="col-5"><%= ticket.description %></td>
+          <td class="col-2"><%= ticket.device.code %></td>
+          <td class="col-2">
+            <div class="row">
+              <%= link_to 'Show', ticket, :class => "btn btn-info btn-sm mx-2" %>
+              <% if current_user.admin == "1" %>
+              <%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm mx-2" %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
