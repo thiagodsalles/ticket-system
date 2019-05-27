@@ -1,25 +1,29 @@
-<p id="notice"><%= notice %></p>
+<section class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-10">
+        <h1 class="display-4"><%= @ticket.title %></h1>
+      </div>
+    
+      <div class="col-2 float-right">
+        <% if @ticket.status == "open" %>
+        <button type="button" class="btn btn-success btn-lg">Open</button>
+        <%else%>
+        <button type="button" class="btn btn-danger btn-lg">Close</button>
+        <%end%>
+      </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @ticket.title %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @ticket.status %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @ticket.description %>
-</p>
-
-<p>
-  <strong>Device:</strong>
-  <%= @ticket.device.code %>
-</p>
-
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', tickets_path %>
+    </div>
+    
+    <p><strong>User:</strong> <%= @ticket.user.email %></p>
+    <p><strong>Device Code:</strong> <%= @ticket.device.code %></p>
+    <p><strong>Device:</strong> <%= @ticket.device.device_category.name %></p>
+    <p><strong>Where:</strong> <%= @ticket.device.local.room %> - <%= @ticket.device.local.floor %></p>
+    <p><strong>Description:</strong> <%= @ticket.description %></p>
+    <div class="float-right">
+      <%= link_to 'Edit', edit_ticket_path, class:"btn btn-info btn" %>
+      <%= link_to 'Back', tickets_path, class:"btn btn-secondary btn" %>
+    </div>
+  </div>
+</section>
 
