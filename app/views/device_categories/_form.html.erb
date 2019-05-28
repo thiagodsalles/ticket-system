@@ -1,7 +1,7 @@
 <%= form_for(@device_category) do |f| %>
   <% if @device_category.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@device_category.errors.count, "error") %> prohibited this device_category from being saved:</h2>
+      <h2><%= pluralize(@device_category.errors.count, "error") %> prohibited this ticket from being saved:</h2>
 
       <ul>
       <% @device_category.errors.full_messages.each do |message| %>
@@ -10,12 +10,12 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  
+  <div class="form-group field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control"%>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+   
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+<%end%>

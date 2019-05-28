@@ -10,28 +10,33 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  
+  <div class="form-group field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
-  <div class="field">
+  
+  <div class="form-group field">
     <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= f.text_field :status, class: "form-control"  %>
   </div>
-  <div class="field">
+  
+  <div class="form-group field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "form-control"  %>
   </div>
-  <div class="field">
+  
+  <div class="form-group field">
     <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= f.text_field :user_id, class: "form-control"  %>
   </div>
-  <div class="field">
+  
+  <div class="form-group field">
     <%= f.label :device_id %><br>
-    <%= f.text_field :device_id %>
+    <%= f.text_field :device_id, class: "form-control"  %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+<%end%>
+
