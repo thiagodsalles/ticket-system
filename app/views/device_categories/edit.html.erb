@@ -1,6 +1,16 @@
-<h1>Editing Device Category</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @device_category %> |
-<%= link_to 'Back', device_categories_path %>
+<section class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-10">
+        <h1 class="display-4">Editing Device Category</h1>
+      </div>
+    </div>
+    <div class="float-right">
+      <%= link_to 'Show', @device_category, class:"btn btn-info btn" %>
+      <%= link_to 'Back', device_categories_path, class:"btn btn-secondary btn" %>
+    </div>
+  </div>
+</section>
+<div class="container">
+	<%= render 'form' %>
+</div>
