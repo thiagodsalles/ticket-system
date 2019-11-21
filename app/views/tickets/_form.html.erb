@@ -18,7 +18,7 @@
   
   <div class="form-group field">
     <%= f.label :status %><br>
-    <%= f.text_field :status, class: "form-control"  %>
+    <%= f.select :status, ['open', 'close'] %>
   </div>
   
   <div class="form-group field">
@@ -28,12 +28,12 @@
   
   <div class="form-group field">
     <%= f.label :user_id %><br>
-    <%= f.text_field :user_id, class: "form-control"  %>
+    <%= f.text_field :user_id, class: "form-control ", value: current_user.id, :readonly => true %>
   </div>
   
   <div class="form-group field">
     <%= f.label :device_id %><br>
-    <%= f.text_field :device_id, class: "form-control"  %>
+    <%= collection_select(:ticket, :device_id, @device_options_for_select, :id, :code) %>
   </div>
   
   <button type="submit" class="btn btn-primary">Submit</button>

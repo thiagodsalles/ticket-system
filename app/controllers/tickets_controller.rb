@@ -15,10 +15,12 @@ class TicketsController < ApplicationController
   # GET /tickets/new
   def new
     @ticket = Ticket.new
+    @device_options_for_select = Device.all
   end
 
   # GET /tickets/1/edit
   def edit
+    @device_options_for_select = Device.all
   end
 
   # POST /tickets

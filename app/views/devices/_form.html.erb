@@ -16,14 +16,17 @@
     <%= f.text_field :code, class: "form-control"   %>
   </div>
   
+  
+
   <div class="form-group field">
     <%= f.label :local_id %><br>
-    <%= f.text_field :local_id, class: "form-control"   %>
+    <%= collection_select(:device, :local_id, @local_options_for_select, :id, :room) %>
   </div>
   
   <div class="form-group field">
     <%= f.label :device_category_id %><br>
-    <%= f.text_field :device_category_id, class: "form-control"   %>
+    <%= collection_select(:device, :device_category_id, @device_category_options_for_select, :id, :name) %>
+    
   </div>
    
   <button type="submit" class="btn btn-primary">Submit</button>

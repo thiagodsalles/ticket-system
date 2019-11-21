@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
+#ruby version 2.3.4
+
+gem 'simple_form'
+gem 'cocoon'
 
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

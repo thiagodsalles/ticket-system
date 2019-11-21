@@ -15,10 +15,14 @@ class DevicesController < ApplicationController
   # GET /devices/new
   def new
     @device = Device.new
+    @local_options_for_select = Local.all
+    @device_category_options_for_select = DeviceCategory.all
   end
 
   # GET /devices/1/edit
   def edit
+    @local_options_for_select = Local.all
+    @device_category_options_for_select = DeviceCategory.all
   end
 
   # POST /devices
